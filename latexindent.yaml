@@ -1,0 +1,16 @@
+defaultIndent: "    "
+
+modifyLineBreaks:
+  condenseMultipleBlankLinesInto: 1 # 0/1
+  textWrapOptions:
+    columns: 120
+    multipleSpacesToSingle: 1
+    removeBlockLineBreaks: 1
+    when: after
+    blocksBeginWith:
+      \\noindent: 1
+      \\textbf: 1
+      \\toolname: 1
+      \\emph: 1
+  indentAfterItems:
+    noindent: 1

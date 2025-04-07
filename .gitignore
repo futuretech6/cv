@@ -1,0 +1,14 @@
+# project output
+/out
+*.pdf
+*.html
+
+# latexindent
+indent.log
+*.bak*
+
+# Windows
+*:Zone.Identifier
+
+# misc
+.DS_Store

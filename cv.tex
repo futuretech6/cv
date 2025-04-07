@@ -1,0 +1,70 @@
+\documentclass[a4paper, 10pt]{article}
+% \documentclass[a4paper, 10pt]{extarticle}
+
+% \usepackage[fontsize=8pt]{fontsize}
+\usepackage[UTF8]{ctex}
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{fontawesome5}
+\usepackage{enumitem}
+
+\hypersetup{
+    pdftitle={Curriculum Vitae of Xiyao Chen},
+    pdfauthor={Xiyao Chen},
+    pdfsubject={Curriculum Vitae},
+    pdfkeywords={resume, curriculum vitae, job application},
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=teal,
+}
+
+\setlist{
+    % noitemsep,
+    % topsep=0pt,
+    % partopsep=0pt,
+}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{textblock*}{0.15\textwidth}(0.95\textwidth, 1\baselineskip)
+    \includegraphics[width=\textwidth]{assets/portrait.png}
+\end{textblock*}
+
+\ifdefined\enzh
+
+    \def\english{true}
+
+    \input{src/toc.tex}
+
+    \newpage
+
+    \let\english\undefined
+
+    \input{src/toc.tex}
+
+\else
+
+    \ifdefined\zhen
+
+        \input{src/toc.tex}
+
+        \newpage
+
+        \def\english{true}
+
+        \input{src/toc.tex}
+
+    \else
+
+        \input{src/toc.tex}
+
+    \fi
+
+\fi
+
+\end{document}

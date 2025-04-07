@@ -1,0 +1,42 @@
+{
+  "latex-workshop.latex.recipe.default": "make",
+  "latex-workshop.latex.outDir": "out",
+  "latex-workshop.latex.jobname": "Xiyao_Chen(陈希尧)-ZJU(浙江大学)-en+zh",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "xelatex",
+      "tools": ["xelatex"]
+    },
+    {
+      "name": "make",
+      "tools": ["make"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "xelatex",
+      "command": "xelatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-halt-on-error",
+        "-output-directory=%OUTDIR%",
+        "cv.tex"
+      ],
+      "env": {}
+    },
+    {
+      "name": "make",
+      "command": "make",
+      "args": ["-j6", "all"],
+      "env": {}
+    }
+  ],
+  "editor.indentSize": 4,
+  "editor.tabSize": 4,
+  "editor.detectIndentation": false,
+  "search.useIgnoreFiles": false,
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "cSpell.words": ["Watchpoint"]
+}

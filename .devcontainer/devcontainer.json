@@ -1,0 +1,14 @@
+{
+  "name": "TeX Live",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": ["James-Yu.latex-workshop"]
+    }
+  },
+  "remoteUser": "root",
+  "postCreateCommand": "bash -c 'pre-commit install; pre-commit install-hooks'"
+}

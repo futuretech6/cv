@@ -1,4 +1,4 @@
-.PHONY: default all clean
+.PHONY: default all clean clean-aux
 
 LATEX=xelatex --shell-escape
 
@@ -40,5 +40,8 @@ $(eval $(call build_pdf,$(BASE_EN_ZH),\def\enzh{true}))
 $(OUTPUT_DIR):
 	mkdir -p $(OUTPUT_DIR)
 
-clean:
+clean: clean-aux
 	rm -rf $(OUTPUT_DIR)
+clean-aux:
+	find . -name "*.log" -delete
+	find . -name "*.bak*" -delete

@@ -16,12 +16,12 @@ repos:
     hooks:
       - id: prettier
 
-  # - repo: https://github.com/cmhughes/latexindent.pl
-  #   rev: V3.23.2
-  #   hooks:
-  #     - id: latexindent
-  #       exclude: ^/out/
-  #       args: [--local, --silent, --modifylinebreaks, --overwriteIfDifferent]
+  - repo: https://github.com/cmhughes/latexindent.pl
+    rev: V3.23.2
+    hooks:
+      - id: latexindent
+        exclude: ^/out/
+        args: [--local, --silent, --modifylinebreaks, --overwriteIfDifferent]
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks
     rev: v1.5.5

@@ -12,5 +12,6 @@ modifyLineBreaks:
       \\textbf: 1
       \\toolname: 1
       \\emph: 1
+      \\footnotetext: 1
   indentAfterItems:
     noindent: 1

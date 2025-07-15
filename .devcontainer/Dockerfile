@@ -1,9 +1,19 @@
 FROM texlive/texlive:latest-full
 
-RUN apt-get update && apt-get install -y \
-    python3 python3-pip
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && apt-get --no-install-recommends install -y ca-certificates && \
+    find /etc/apt -type f -name "*.sources" | xargs -I{} sed -i 's|http://|https://|g' {} && \
+    apt-get update && \
+    apt-get upgrade -y && \
+    apt-get --no-install-recommends install -y \
+        pipx curl
 
-# RUN tlmgr install ctex textpos fontawesome5
+RUN pipx install pre-commit
 
-RUN pip install pre-commit --break-system-packages
+RUN --mount=type=cache,target=/tmp \
+    curl -sSf https://starship.rs/install.sh | sh -s -- -y
+
+RUN tee -a /etc/bash.bashrc <<"EOF"
+eval "$(starship init bash)"
+EOF

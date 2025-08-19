@@ -1,4 +1,4 @@
-.PHONY: default all clean clean-aux
+.PHONY: default docker all clean clean-aux
 
 LATEX=xelatex --shell-escape
 
@@ -20,6 +20,13 @@ FLAGS=-output-directory=$(OUTPUT_DIR) \
       -halt-on-error
 
 default: all
+
+docker:
+	docker run --rm -it \
+		--user $(shell id -u):$(shell id -g) \
+		-v $(shell pwd):/workdir \
+		texlive/texlive:latest-full \
+		make -j$(shell nproc)
 
 all: $(BASES:%=$(OUTPUT_DIR)/%.pdf)
 

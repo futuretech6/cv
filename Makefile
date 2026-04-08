@@ -1,6 +1,12 @@
 .PHONY: default docker all clean clean-aux
 
-LATEX=xelatex --shell-escape
+DOCKER_CMD:=docker run --rm \
+	--user $(shell id -u):$(shell id -g) \
+	-v $(shell pwd):/workdir \
+	texlive/texlive:latest-full \
+
+LATEX:=xelatex --shell-escape
+LATEX:=$(DOCKER_CMD) $(LATEX)
 
 MAINDOC=cv
 OUTPUT_DIR=out
@@ -22,11 +28,7 @@ FLAGS=-output-directory=$(OUTPUT_DIR) \
 default: all
 
 docker:
-	docker run --rm -it \
-		--user $(shell id -u):$(shell id -g) \
-		-v $(shell pwd):/workdir \
-		texlive/texlive:latest-full \
-		make -j$(shell nproc)
+	$(DOCKER_CMD) make -j$(shell nproc)
 
 all: $(BASES:%=$(OUTPUT_DIR)/%.pdf)
 
